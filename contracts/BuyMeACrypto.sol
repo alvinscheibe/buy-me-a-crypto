@@ -39,4 +39,18 @@ contract BuyMeACrypto {
         //Emit a log event when a new memo is created
         emit NewMemo(msg.sender, block.timestamp, _name, _message);
     }
+
+    /**
+     * Send the entire balance stored in this contract to the owner
+     */
+    function withdrawTips() public {
+        require(owner.send(address(this).balance));
+    }
+
+    /**
+     * Fetches all stored memos
+     */
+    function getMemos() public view returns(Memo[] memory) {
+        return memos;
+    }
 }
