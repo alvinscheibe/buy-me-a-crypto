@@ -24,4 +24,19 @@ contract BuyMeACrypto {
     constructor() {
         owner = payable(msg.sender);
     }
+
+    /**
+     * Buy a crypto for contract owner
+     * @param _name Name of the crypto buyer
+     * @param _message A nice message from the crypto buyer
+     */
+    function buyCrypto(string memory _name, string memory _message) public payable {
+        require(msg.value > 0, "You can't buy with 0 ETH");
+
+        //Add the memo to storage
+        memos.push(Memo(msg.sender, block.timestamp, _name, _message));
+
+        //Emit a log event when a new memo is created
+        emit NewMemo(msg.sender, block.timestamp, _name, _message);
+    }
 }
