@@ -66,7 +66,7 @@ async function main() {
   };
   await buyMeACrypto.connect(tipper).buyCrypto("Carolina", "You're the best!", tip);
   await buyMeACrypto.connect(tipper2).buyCrypto("Vitto", "Amazing person", tip);
-  await buyMeACrypto.connect(tipper3).buyCrypto("Kay", "I love my Proof ok Knowledge", tip);
+  await buyMeACrypto.connect(tipper3).buyCrypto("Kay", "I love my Proof of Knowledge", tip);
 
   //Check balances after cryptos purchases
   console.log('== Bought crypto ==');
