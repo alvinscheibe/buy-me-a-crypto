@@ -1,8 +1,18 @@
-import { ethers } from "hardhat";
+import hre, { ethers } from "hardhat";
 
-async function main() {}
+async function main() {
+  //Get the contract to deploy
+  const BuyMeACrypto = await hre.ethers.getContractFactory('BuyMeACrypto');
+  const buyMeACrypto = await BuyMeACrypto.deploy();
 
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+  //Deploy the contract
+  await buyMeACrypto.deployed();
+  console.log('BuyMeACrypto deployed to: ', buyMeACrypto.address);
+}
+
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.log(error);
+    process.exit(1);
+  });
